@@ -1,12 +1,3 @@
-/**
- * ─────────────────────────────────────────────────────────────
- *  CONTENIDO DEL PORTAFOLIO
- *  Edita este archivo para cambiar textos, imágenes y proyectos.
- *  Para usar tus propias imágenes, colócalas en /public/images y
- *  reemplaza `placeholder(...)` por `local(...)` (ver images.js).
- * ─────────────────────────────────────────────────────────────
- */
-// eslint-disable-next-line no-unused-vars
 import { placeholder, local } from './images.js';
 
 export const profile = {
@@ -15,8 +6,8 @@ export const profile = {
   lastName: 'Montalvo',
   role: 'Desarrolladora FrontEnd & Creative',
   email: 'montalvoazul5@gmail.com',
-  cvUrl: '/cv/CV.pdf', // Sustituye el archivo en /public/cv/CV.pdf
-  cvFileName: 'CV-Jon-Daniel.pdf',
+  cvUrl: '/cv/CV.pdf',
+  cvFileName: 'CV-Azul-Montalvo.pdf',
   // PNG con fondo transparente: la cabeza sobresale del círculo como en el diseño.
   photo: local('retrato_ilustracion.png', 800, 1000, 'Retrato ilustrado de Jon Daniel', false),
 };
@@ -101,7 +92,7 @@ export const brandingProjects = [
     colors: ['#f7f7f7', '#ebb800', '#524b31', '#1c1c1a'],
     cover: local('branding/mision-tres-sesenta', 768, 769, 'Logotipo de Misión 360 con letras blancas sobre círculo negro'),
     coverFit: 'contain',
-    coverBg: '#ffffff',    
+    coverBg: '#ffffff',
   },
   {
     id: 'vanta',
