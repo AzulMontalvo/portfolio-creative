@@ -1,0 +1,58 @@
+.lazy-img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: var(--skeleton);
+}
+
+.lazy-img img {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.03);
+  transition:
+    opacity 0.5s var(--ease),
+    transform 0.8s var(--ease);
+}
+
+.lazy-img--loaded {
+  background: transparent;
+}
+
+.lazy-img--loaded img {
+  opacity: 1;
+  transform: none;
+}
+
+.lazy-img__skeleton {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    100deg,
+    var(--skeleton) 30%,
+    var(--skeleton-shine) 50%,
+    var(--skeleton) 70%
+  );
+  background-size: 300% 100%;
+  animation: lazy-shimmer 1.3s linear infinite;
+}
+
+.lazy-img--error .lazy-img__skeleton {
+  animation: none;
+}
+
+.lazy-img__error {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+@keyframes lazy-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}

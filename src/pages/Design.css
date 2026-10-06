@@ -1,0 +1,133 @@
+/* 16:9 como los banners; se muestran completos (sin recortar el texto) */
+.design__hero {
+  aspect-ratio: 16 / 9;
+  margin-bottom: var(--gap);
+  background: #f3f4f9;
+}
+
+/* Mosaico tipo masonry con columnas CSS */
+.design__grid {
+  columns: 3 260px;
+  column-gap: var(--gap);
+}
+
+.design__grid li {
+  break-inside: avoid;
+  margin-bottom: var(--gap);
+}
+
+.design__card {
+  display: block;
+  width: 100%;
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.4s var(--ease),
+    box-shadow 0.4s var(--ease);
+}
+
+.design__card img {
+  transition: transform 0.6s var(--ease);
+}
+
+.design__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px -18px rgb(0 0 0 / 30%);
+}
+
+.design__card:hover img {
+  transform: scale(1.04);
+}
+
+/* ───── Ícono de colección ───── */
+.design__item {
+  position: relative;
+}
+
+.design__collection {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: 99px;
+  background: rgb(14 14 16 / 72%);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 22%);
+  transition: background 0.3s;
+}
+
+.design__collection svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* El texto está oculto y se despliega al pasar el cursor o con el teclado */
+.design__collection-label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  font-weight: 500;
+  opacity: 0;
+  transition:
+    max-width 0.4s var(--ease),
+    margin 0.4s var(--ease),
+    opacity 0.25s;
+}
+
+.design__collection:hover,
+.design__collection:focus-visible {
+  background: var(--violet);
+}
+
+.design__collection:hover .design__collection-label,
+.design__collection:focus-visible .design__collection-label {
+  max-width: 180px;
+  margin-left: 8px;
+  opacity: 1;
+}
+
+.design__lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgb(14 14 16 / 82%);
+  backdrop-filter: blur(6px);
+  cursor: zoom-out;
+  animation: design-fade 0.25s ease both;
+}
+
+.design__lightbox-img {
+  border-radius: var(--radius-md);
+  background: transparent;
+}
+
+.design__lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 1.1rem;
+}
+
+@keyframes design-fade {
+  from {
+    opacity: 0;
+  }
+}

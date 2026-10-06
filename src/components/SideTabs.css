@@ -1,0 +1,68 @@
+.side-tabs ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.side-tabs__link {
+  position: relative;
+  display: block;
+  padding: 10px 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  opacity: 0.75;
+  transition: opacity 0.25s;
+}
+
+.side-tabs__link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  width: 3px;
+  height: 0;
+  border-radius: 3px;
+  background: currentColor;
+  transform: translateY(-50%);
+  transition: height 0.35s var(--ease);
+}
+
+.side-tabs__link:hover,
+.side-tabs__link.is-active {
+  opacity: 1;
+}
+
+.side-tabs__link:hover::before,
+.side-tabs__link.is-active::before {
+  height: 60%;
+}
+
+/* Variante horizontal (móvil) */
+.side-tabs--horizontal ul {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.side-tabs--horizontal .side-tabs__link {
+  padding: 8px 14px;
+  border-radius: 99px;
+  writing-mode: horizontal-tb;
+  transform: none;
+  background: rgb(255 255 255 / 12%);
+}
+
+.side-tabs--horizontal .side-tabs__link.is-active {
+  background: #fff;
+  color: var(--violet);
+}
+
+.side-tabs--horizontal .side-tabs__link::before {
+  display: none;
+}

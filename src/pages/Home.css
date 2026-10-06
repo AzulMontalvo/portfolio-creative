@@ -1,0 +1,563 @@
+.home {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto minmax(260px, auto) minmax(180px, auto);
+  gap: var(--gap);
+}
+
+/* ───── Perfil ───── */
+.home__profile {
+  grid-column: 1 / 5;
+  grid-row: 1 / 4;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto auto;
+  column-gap: 12px;
+  padding: 20px 22px 20px 14px;
+  background: var(--violet);
+  color: #fff;
+}
+
+.home__about {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 7px 14px;
+  border-radius: 0 0 14px 0;
+  margin: -20px 0 0 -14px;
+  background: #f7f7f9;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.25s;
+}
+
+.home__about:hover {
+  color: var(--violet);
+}
+
+.home__tabs {
+  grid-column: 1;
+  grid-row: 2 / 5;
+  align-self: center;
+}
+
+.home__tabs-mobile {
+  display: none;
+}
+
+.home__photo-wrap {
+  grid-column: 2;
+  grid-row: 2;
+  position: relative;
+  justify-self: center;
+  align-self: center;
+  /* También se limita por la altura de la ventana para no invadir los links */
+  width: min(100%, 200px, 24vh);
+  /* Incluye el espacio de la cabeza que sobresale: nada se sale de la caja */
+  aspect-ratio: 1 / 1.35;
+  margin: 12px 0 8px;
+}
+
+/* Pantallas grandes: retrato más grande (en medianas y chicas se mantiene el tamaño base) */
+@media (min-width: 1280px) {
+  .home__photo-wrap {
+    width: min(100%, 280px);
+  }
+}
+
+/* Círculo (disco + aro) alineado a la base de la caja */
+.home__photo-circle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  aspect-ratio: 1;
+}
+
+/* Disco rosa */
+.home__photo-disc {
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+/* Aro blanco fino alrededor del disco */
+.home__photo-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgb(255 255 255 / 85%);
+}
+
+/*
+ * Ocupa toda la caja. Solo la mitad inferior tiene esquinas redondeadas
+ * (radio = medio ancho), así el retrato queda recortado por la curva del
+ * círculo abajo y libre arriba.
+ * Alto = 1.35 × ancho  →  radio vertical = 0.5 / 1.35 ≈ 37%.
+ */
+.home__photo-clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* El retrato va por encima del disco y del aro blanco */
+  z-index: 1;
+  border-radius: 0 0 50% 50% / 0 0 37% 37%;
+}
+
+.home__photo {
+  height: 100%;
+  aspect-ratio: auto !important;
+  background: transparent;
+}
+
+.home__photo img {
+  height: 100%;
+}
+
+/* El loader ocupa solo el disco, no la zona transparente de arriba */
+.home__photo .lazy-img__skeleton {
+  inset: auto 9% 6.7%;
+  height: 60.7%;
+  border-radius: 50%;
+}
+
+.home__name {
+  grid-column: 2;
+  grid-row: 3;
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.home__greeting {
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.home__profile-footer {
+  grid-column: 2;
+  grid-row: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.home__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgb(255 255 255 / 50%);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+.home__email svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+/* ───── Título ───── */
+.home__title {
+  grid-column: 5 / 13;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 4px 4px 0;
+}
+
+.home__role {
+  margin-bottom: 0.6em;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+/* ───── Carrusel ───── */
+.home__carousel {
+  grid-column: 5 / 10;
+  grid-row: 2;
+  min-height: 260px;
+}
+
+/* ───── Estadísticas ───── */
+.home__stats {
+  grid-column: 10 / 13;
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.home__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 0;
+  padding: 16px;
+  text-align: center;
+}
+
+.home__stat strong {
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.home__stat-text {
+  max-width: 16ch;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* Indicador de disponibilidad */
+.home__status-dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: #1f9d55;
+}
+
+.home__status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: status-pulse 1.8s ease-out infinite;
+}
+
+.is-unavailable .home__status-dot {
+  background: #8a8a92;
+}
+
+.is-unavailable .home__status-dot::after {
+  animation: none;
+}
+
+@keyframes status-pulse {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.home__stat--teal {
+  background: var(--teal);
+  color: var(--ink);
+}
+
+.home__stat--violet {
+  background: var(--violet-soft);
+  color: #fff;
+}
+
+/* ───── Contacto ───── */
+.home__contact {
+  grid-column: 5 / 8;
+  grid-row: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background: var(--graphite);
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.home__contact:hover {
+  background: #4a4a4f;
+}
+
+.home__contact svg {
+  width: 36px;
+  height: 36px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.35s var(--ease);
+}
+
+.home__contact:hover svg {
+  transform: translateX(6px);
+}
+
+/* ───── Tecnologías ───── */
+.home__tech {
+  grid-column: 8 / 13;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: minmax(90px, 0.8fr) minmax(0, 1.4fr);
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: var(--black);
+}
+
+/*
+ * Foto decorativa: panel redondeado que llena la columna izquierda.
+ * La imagen va en posición absoluta para que su proporción (vertical)
+ * no agrande la tarjeta; el alto lo marca la tarjeta amarilla.
+ */
+.home__sphere {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  min-height: 120px;
+  border-radius: var(--radius-md);
+  aspect-ratio: auto !important;
+}
+
+.home__sphere img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.home__tech-card {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.home__tech-card h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.home__tech-card h2 strong {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.home__tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.home__tech-list li {
+  padding: 3px 9px;
+  border-radius: 99px;
+  background: rgb(0 0 0 / 8%);
+  font-size: 0.74rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ───── Pantallas grandes: Home cabe completo en la ventana, sin scroll ───── */
+@media (min-width: 1021px) and (min-height: 620px) {
+  .frame.home {
+    width: min(1600px, calc(100% - 32px));
+    height: calc(100vh - 32px);
+    height: calc(100dvh - 32px);
+    margin: 16px auto;
+    /* Las filas se reparten el alto disponible en lugar de crecer con su contenido */
+    grid-template-rows: auto minmax(0, 1fr) minmax(0, 0.62fr);
+  }
+
+  .home .big-title {
+    font-size: clamp(3rem, min(8.5vw, 11vh), 7.5rem);
+  }
+
+  /* Perfil: la fila del retrato toma el espacio sobrante y el retrato se ajusta a ella */
+  .home__profile {
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    min-height: 0;
+  }
+
+  .home__photo-wrap {
+    /* Pegado al nombre; si sobra alto, el espacio queda arriba */
+    align-self: end;
+    width: auto;
+    height: 100%;
+    max-height: 420px;
+    max-width: 100%;
+    margin: 8px 0 4px;
+  }
+
+  .home__name {
+    font-size: clamp(2rem, min(4.2vw, 6.5vh), 4rem);
+  }
+
+  .home__profile-footer {
+    margin-top: 10px;
+  }
+
+  .home__profile-footer .cv-btn {
+    --size: clamp(76px, 11vh, 104px) !important;
+  }
+
+  .home__carousel {
+    min-height: 0;
+  }
+
+  /* Tarjetas inferiores: el contenido se adapta a la altura de la fila */
+  .home__contact,
+  .home__tech {
+    min-height: 0;
+  }
+
+  .home__tech {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .home__sphere {
+    min-height: 0;
+  }
+
+  .home__tech-card {
+    min-height: 0;
+    overflow: hidden;
+    padding: clamp(10px, 1.8vh, 16px) 18px;
+    gap: clamp(6px, 1.2vh, 10px);
+  }
+}
+
+/* ───── Responsive ───── */
+@media (max-width: 1020px) {
+  .home {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: none;
+  }
+
+  .home__title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .home__profile {
+    grid-column: 1 / 4;
+    grid-row: 2 / 4;
+  }
+
+  .home__carousel {
+    grid-column: 4 / 7;
+    grid-row: 2;
+  }
+
+  .home__stats {
+    grid-column: 4 / 7;
+    grid-row: 3;
+    grid-template-rows: none;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home__contact {
+    grid-column: 1 / 3;
+    grid-row: 4;
+  }
+
+  .home__tech {
+    grid-column: 3 / 7;
+    grid-row: 4;
+  }
+}
+
+@media (max-width: 760px) {
+  .home {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home__title,
+  .home__profile,
+  .home__carousel,
+  .home__stats,
+  .home__contact,
+  .home__tech {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .home__title {
+    order: -1;
+  }
+
+  .home__profile {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px;
+  }
+
+  .home__about {
+    margin: -20px 0 0 -20px;
+  }
+
+  .home__tabs {
+    display: none;
+  }
+
+  .home__tabs-mobile {
+    display: block;
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 16px;
+  }
+
+  .home__photo-wrap,
+  .home__name,
+  .home__profile-footer {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .home__photo-wrap {
+    width: min(55%, 200px);
+  }
+
+  .home__carousel {
+    min-height: 0;
+    aspect-ratio: 3 / 2;
+  }
+
+  .home__stats {
+    height: 130px;
+  }
+
+  .home__contact {
+    min-height: 140px;
+  }
+
+  .home__tech {
+    grid-template-columns: 84px minmax(0, 1fr);
+  }
+}

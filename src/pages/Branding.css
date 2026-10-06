@@ -1,0 +1,73 @@
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--gap);
+}
+
+.brand-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.brand-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -18px rgb(0 0 0 / 28%);
+}
+
+.brand-card.is-open {
+  opacity: 0.35;
+}
+
+.brand-card__img {
+  aspect-ratio: 4 / 3 !important;
+}
+
+.brand-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px 18px;
+}
+
+.brand-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.brand-card__title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand-card__summary {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.brand-card__palette {
+  display: flex;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.brand-card__palette span {
+  width: 20px;
+  height: 20px;
+  margin-right: -5px;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+}

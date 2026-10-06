@@ -1,0 +1,251 @@
+.pmodal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  /* Centra el panel en cualquier tamaño de ventana */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgb(14 14 16 / 55%);
+  backdrop-filter: blur(4px);
+  animation: pmodal-fade 0.3s ease both;
+}
+
+.pmodal__panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  width: min(860px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: 0 30px 80px -20px rgb(0 0 0 / 45%);
+  transform-origin: top left;
+  overscroll-behavior: contain;
+  /* Scroll sin barra visible (el indicador de abajo la sustituye) */
+  scrollbar-width: none;
+}
+
+.pmodal__panel::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * Indicador de más contenido. Es la última fila de la cuadrícula, con alto 0 y
+ * `sticky`, así queda pegado al borde inferior visible del panel mientras se
+ * hace scroll. Ocupa solo la columna del texto.
+ */
+.pmodal__more {
+  grid-column: 2;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pmodal__more.is-visible {
+  opacity: 1;
+}
+
+.pmodal__more-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 84px;
+  background: linear-gradient(to bottom, rgb(255 255 255 / 0%), var(--surface) 70%);
+}
+
+.pmodal__more-btn {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--black);
+  color: #fff;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 22%);
+  transform: translateX(-50%);
+  animation: pmodal-bounce 1.6s var(--ease) infinite;
+}
+
+.pmodal__more.is-visible .pmodal__more-btn {
+  pointer-events: auto;
+}
+
+.pmodal__more-btn:hover {
+  background: var(--violet);
+}
+
+.pmodal__more-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes pmodal-bounce {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 6px);
+  }
+}
+
+.pmodal__img {
+  height: 100%;
+  min-height: 260px;
+  aspect-ratio: auto !important;
+}
+
+.pmodal__img img {
+  height: 100%;
+}
+
+.pmodal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.pmodal__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.pmodal__title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.pmodal__client {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.pmodal__desc {
+  line-height: 1.6;
+}
+
+.pmodal__subtitle {
+  margin: 8px 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.pmodal__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pmodal__palette {
+  display: flex;
+  gap: 8px;
+}
+
+.pmodal__palette li {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);
+}
+
+.pmodal__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: 12px;
+  padding: 10px 18px;
+  border-radius: 99px;
+  background: var(--black);
+  color: #fff;
+  font-weight: 500;
+  transition: background 0.25s;
+}
+
+.pmodal__link:hover {
+  background: var(--violet);
+}
+
+.pmodal__link svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s var(--ease);
+}
+
+.pmodal__link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.pmodal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 15%);
+}
+
+.pmodal__close svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+@keyframes pmodal-fade {
+  from {
+    background: transparent;
+  }
+}
+
+@media (max-width: 760px) {
+  .pmodal__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .pmodal__img {
+    min-height: 0;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .pmodal__more {
+    grid-column: 1;
+  }
+}

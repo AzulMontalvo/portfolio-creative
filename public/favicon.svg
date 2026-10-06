@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 418.17 874"><style>
+    path { fill: #2c5282; }
+    
+    @media (prefers-color-scheme: dark) {
+      path { fill: #ebf8ff; }
+    }
+  </style><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M375.36,418.48H276.62l-16-69.9H160.32l-16.61,69.9H46.84L157.81,0H264.39ZM242.45,273.35q-21.33-93.42-32-177.74h-1.25q-11.28,86.84-31.66,177.74Z" fill="#e6ecef"/><path d="M45.14,455.52H165.2q25.7,135.42,40.44,232.9L216,623.54q6.27-37.93,13.48-74l18.5-94H370.52L418.17,874h-94L298.74,586.23,240.12,874H175.86L114.42,585.61,90,874H0Z" fill="#e6ecef"/></g></g></svg>

@@ -1,0 +1,36 @@
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 100vh;
+}
+
+.page-loader__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--violet);
+  animation: page-bounce 0.9s var(--ease) infinite alternate;
+}
+
+.page-loader__dot:nth-child(2) {
+  background: var(--teal);
+  animation-delay: 0.15s;
+}
+
+.page-loader__dot:nth-child(3) {
+  background: var(--yellow);
+  animation-delay: 0.3s;
+}
+
+@keyframes page-bounce {
+  from {
+    transform: translateY(6px);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}

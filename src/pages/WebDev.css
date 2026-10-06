@@ -1,0 +1,231 @@
+.web-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+  gap: var(--gap);
+}
+
+.web-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.web-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px -18px rgb(0 0 0 / 28%);
+}
+
+/* ───── Proyecto en desarrollo ───── */
+.web-card {
+  position: relative;
+}
+
+.web-card__status {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 25%);
+  cursor: help;
+}
+
+.web-card__status svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Halo pulsante para llamar la atención sin ser invasivo */
+.web-card__status::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--yellow);
+  z-index: -1;
+  animation: web-status-pulse 2s ease-out infinite;
+}
+
+@keyframes web-status-pulse {
+  to {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.web-card__tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: -6px;
+  display: grid;
+  gap: 2px;
+  width: max-content;
+  max-width: 240px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--black);
+  color: #fff;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  text-align: left;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 28%);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s var(--ease),
+    visibility 0.2s;
+  pointer-events: none;
+}
+
+/* Flechita del tooltip apuntando al ícono */
+.web-card__tooltip::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  background: var(--black);
+  transform: rotate(45deg);
+}
+
+.web-card__tooltip strong {
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+.web-card__status:hover .web-card__tooltip,
+.web-card__status:focus .web-card__tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.web-card__preview {
+  display: block;
+  margin: 12px 12px 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--black);
+}
+
+.web-card__bar {
+  display: flex;
+  gap: 6px;
+  padding: 9px 12px;
+}
+
+.web-card__bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.web-card__bar i:nth-child(2) {
+  background: #febc2e;
+}
+
+.web-card__bar i:nth-child(3) {
+  background: #28c840;
+}
+
+.web-card__preview img {
+  transition: transform 0.6s var(--ease);
+}
+
+.web-card:hover .web-card__preview img {
+  transform: scale(1.03);
+}
+
+.web-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px 20px;
+}
+
+.web-card__title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.web-card__desc {
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.web-card__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.web-card__stack li {
+  padding: 4px 11px;
+  border-radius: 99px;
+  background: var(--yellow);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.web-card__stack li:nth-child(3n + 2) {
+  background: var(--teal);
+}
+
+.web-card__stack li:nth-child(3n + 3) {
+  background: var(--violet);
+  color: #fff;
+}
+
+.web-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: auto;
+  padding: 10px 18px;
+  border-radius: 99px;
+  background: var(--black);
+  color: #fff;
+  font-weight: 500;
+  transition: background 0.25s;
+}
+
+.web-card__link:hover {
+  background: var(--violet);
+}
+
+.web-card__link svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s var(--ease);
+}
+
+.web-card__link:hover svg {
+  transform: translate(2px, -2px);
+}

@@ -1,0 +1,173 @@
+:root {
+  --bg: #ececef;
+  --surface: #ffffff;
+  --ink: #0e0e10;
+  --ink-soft: #55555c;
+  --violet: #7b73d9;
+  --violet-soft: #9d8bd8;
+  --pink: #f2b8f5;
+  --teal: #a9dcd8;
+  --graphite: #59595e;
+  --black: #0c0c0d;
+  --yellow: #fec867;
+  --skeleton: #dcdce2;
+  --skeleton-shine: #f3f3f6;
+
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --gap: clamp(12px, 1.6vw, 20px);
+  --shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 12px 32px -12px rgb(0 0 0 / 14%);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Contenedor general: replica el "lienzo" blanco con esquinas redondeadas */
+.frame {
+  width: min(1240px, calc(100% - 32px));
+  margin: 24px auto;
+  padding: clamp(14px, 2.4vw, 28px);
+  background: #f7f7f9;
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+}
+
+.card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Esquina decorativa ⌝ presente en las tarjetas del diseño */
+.corner::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.chip {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 99px;
+  background: var(--violet);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.chip--outline {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px rgb(0 0 0 / 14%);
+}
+
+.big-title {
+  font-weight: 700;
+  font-size: clamp(3rem, 8.5vw, 6.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  position: relative;
+  display: inline-block;
+  padding-right: 0.32em;
+}
+
+.big-title::after {
+  content: '';
+  position: absolute;
+  top: 0.06em;
+  right: 0;
+  width: 0.16em;
+  height: 0.16em;
+  border-top: 0.05em solid currentColor;
+  border-right: 0.05em solid currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

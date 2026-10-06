@@ -1,0 +1,140 @@
+.page {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: var(--gap);
+  min-height: calc(100vh - 48px);
+}
+
+.page__rail {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(12px, 3vh, 24px);
+  height: calc(100vh - 48px - 2 * clamp(14px, 2.4vw, 28px));
+  max-height: 760px;
+  /* Nunca más baja que su contenido: el botón de CV no se recorta */
+  min-height: min-content;
+  padding: clamp(12px, 2.4vh, 18px) 0 clamp(12px, 2vh, 14px);
+  background: var(--violet);
+  color: #fff;
+}
+
+/* En ventanas bajas las pestañas se compactan */
+.page__rail .side-tabs ul {
+  gap: clamp(8px, 3.2vh, 26px);
+}
+
+.page__home {
+  flex: none;
+  border-radius: 50%;
+}
+
+/* Avatar: la ilustración completa, centrada dentro del círculo rosa */
+.page__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 85%);
+}
+
+.page__avatar img {
+  width: 78%;
+  height: 78%;
+  margin: 11%;
+}
+
+.page__cv {
+  --size: clamp(60px, 10vh, 74px) !important;
+}
+
+.page__tabs-mobile {
+  display: none;
+}
+
+.page__main {
+  min-width: 0;
+}
+
+.page__header {
+  display: grid;
+  gap: 14px;
+  margin-bottom: clamp(20px, 3vw, 36px);
+}
+
+.page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  padding: 6px 12px 6px 8px;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s var(--ease);
+}
+
+.page__back:hover {
+  transform: translateX(-3px);
+}
+
+.page__back svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.page__title {
+  font-size: clamp(2.6rem, 7.5vw, 5.6rem);
+}
+
+.page__intro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 60ch;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.page__intro-dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+@media (max-width: 760px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .page__rail {
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    padding: 14px 16px;
+  }
+
+  .page__tabs {
+    display: none;
+  }
+
+  .page__tabs-mobile {
+    display: block;
+    order: 3;
+    flex-basis: 100%;
+  }
+}
