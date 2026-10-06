@@ -6,7 +6,7 @@ export const profile = {
   lastName: 'Montalvo',
   role: 'Desarrolladora FrontEnd & Creative',
   email: 'montalvoazul5@gmail.com',
-  cvUrl: '/cv/CV.pdf',
+  cvUrl: '/cv/CV-Azul-Montalvo.pdf',
   cvFileName: 'CV-Azul-Montalvo.pdf',
   // PNG con fondo transparente: la cabeza sobresale del círculo como en el diseño.
   photo: local('retrato_ilustracion.png', 800, 1000, 'Retrato ilustrado de Jon Daniel', false),
