@@ -93,6 +93,8 @@ export const brandingProjects = [
     cover: local('branding/mision-tres-sesenta', 768, 769, 'Logotipo de Misión 360 con letras blancas sobre círculo negro'),
     coverFit: 'contain',
     coverBg: '#ffffff',
+link: 'https://drive.google.com/file/d/1rSYC92c-7tznJa1LjIlcVN7_3A1Bw-35/view?usp=drivesdk',
+    linkLabel: 'Ver Más',
   },
   {
     id: 'vanta',
